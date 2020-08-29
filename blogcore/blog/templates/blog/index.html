@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index page</title>
-</head>
-<body>
-<b> <h1> Body text </h1></b>
-    {{ var_for_html_templ }}
+{% extends "blog/base.html" %}
 
+{% block title %}
+  TEXT
+{% endblock %}
+
+
+
+{% block content %}
     {% for count in var_for_html_templ %}
         <p>
             {{ count }}
         </p>
     {% endfor %}
-
-
-</body>
-</html>
+{% endblock %}
