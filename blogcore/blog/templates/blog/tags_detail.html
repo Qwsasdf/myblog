@@ -1,0 +1,10 @@
+{% extends "blog/base_blog.html" %}
+
+    {% block content %}
+        <h3 class="mb-5 mt-3">Статьи с тегом "{{tag.title|title}}"</h3>
+            {% for post in tag.posts.all %}
+
+                {%include 'blog/includes/postcard.html'%}
+
+            {% endfor %}
+    {% endblock content %}
