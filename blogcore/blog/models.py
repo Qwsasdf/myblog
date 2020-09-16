@@ -35,6 +35,10 @@ def translit(s):
 
 
 
+
+
+
+
 def gen_slug(s,timeinsug):
     new_slag = slugify(s,allow_unicode=True)
     if timeinsug==True:

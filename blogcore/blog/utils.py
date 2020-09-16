@@ -2,6 +2,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import *
 
 
+class ObjDelMixin():
+    model = None
+    template = None
+    template_red = None
+    def get(self,request, slug):
+        obj = self.model.objects.get(slug=slug)
+        obj.delete()
+        return redirect(self.template_red)
+
+
 class ObjectDetailMixin:
     model = None
     template = None
@@ -14,15 +24,15 @@ class ObjectDetailMixin:
 class ObjCreateMixin:
     template = None
     template_red= None
-    tekclass = None
+    model_form= None
 
     def get(self,request):
-        form=self.tekclass()
+        form=self.model_form()
         return render(request,self.template, context={"form":form})
 
 
     def post(self,request):
-        bound_form=self.tekclass(request.POST)
+        bound_form=self.model_form(request.POST)
         if bound_form.is_valid():
             print(bound_form.cleaned_data)
             new_tag = bound_form.save()
