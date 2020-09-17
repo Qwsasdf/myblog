@@ -4,19 +4,6 @@ from  django.views.generic import View
 from .utils import *
 from .forms import TagForm, PostForm
 
-def post_submit(request):
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    print("!!!!!!!!!!")
-    return render(request,'blog/confirm_form.html')
-
-
-
-
 
 def post_list(request):
     posts=Post.objects.order_by("-date_pub")
