@@ -8,8 +8,19 @@
 
 {% block content %}
     <h3 class="mt-5">Теги</h3>
-        {% for tag in tags %}
-           <a href="{{tag.get_absolute_url}}">{{tag.title}}</h5>
+       {% for tag in tags %}
+            <div class="card" style="width: 40rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{tag.title}}</h5>
+                    <a href="{{tag.get_absolute_url}}" class="btn btn-primary">Связанные статьи</a>
+                    <a href="{% url 'tag_update_url' slug=tag.slug %}" class="btn btn-info">Редактировать</a>
+                    <a href="{% url 'tag_delete_url' slug=tag.slug %}" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+
+
+
+
          <br>
         {% endfor %}
 

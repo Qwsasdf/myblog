@@ -7,6 +7,8 @@
                 <h5 class="card-title"> {{ post.title }}</h5>
                 <p class="card-text"> {{ post.body|truncatewords:15 }}</p>
                 <a href="{{post.get_absolute_url}}" class="btn btn-primary">Читать</a>
+                <a href="{% url 'post_update_url' slug=post.slug %}" class="btn btn-info">Редактировать</a>
+                <a href="{% url 'post_delete_url' slug=post.slug %}" class="btn btn-danger">Удалить</a>
             </div>
             <div class="card-footer text-muted">
                 Теги:
