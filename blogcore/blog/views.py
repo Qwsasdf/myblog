@@ -4,6 +4,15 @@ from  django.views.generic import View
 from .utils import *
 from .forms import TagForm, PostForm
 
+def post_submit(request):
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    print("!!!!!!!!!!")
+    return render(request,'blog/confirm_form.html')
 
 
 

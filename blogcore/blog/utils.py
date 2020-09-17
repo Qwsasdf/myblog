@@ -6,7 +6,14 @@ class ObjDelMixin():
     model = None
     template = None
     template_red = None
-    def get(self,request, slug):
+
+    def get (self,request,slug):
+        obj = self.model.objects.get(slug__iexact=slug)
+        return  render(self.request,"blog/confirm_form.html",context={"obj":obj,"template_red":self.template_red})
+
+
+
+    def post(self,request, slug):
         obj = self.model.objects.get(slug=slug)
         obj.delete()
         return redirect(self.template_red)

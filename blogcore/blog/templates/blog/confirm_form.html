@@ -1,0 +1,18 @@
+{% extends "blog/base_blog.html"%}
+
+{% block content%}
+
+<form class="mb-5 mt-3" action="" method="post"  >
+     {% csrf_token %}
+    <legend>
+        Действиьельно удалить {{obj.title}}
+
+    </legend>
+    <a href="{% url template_red  %}" class = "btn  btn-primary"> Нет уж </a>
+    <button type = "submit" class = "btn btn-danger">Да удалить </button>
+    <br>
+</form>
+
+
+{% endblock %}
+
