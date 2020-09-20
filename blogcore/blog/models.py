@@ -21,6 +21,10 @@ def translit(s):
            "8": "8", "9": "9", "0":"0"
            }
 
+    # num = {str(a): b for (a, b) in zip(range(10), range(10))} через генератор
+    # strokaeng="abcdefghijklmnopqrstuvwxyz"
+    # eng = {a:a for a in strokaeng} через генератор
+
     vocab =rus.copy()
     vocab.update(eng)
     vocab.update(num)
@@ -50,9 +54,9 @@ def gen_slug(s,timeinsug):
 class Post(models.Model):
         title=models.CharField(max_length=150,db_index=True,verbose_name="Заголовок")
         slug=models.CharField(max_length=150,blank=True,unique=True)
-        body=models.TextField(blank=True,db_index=True)
+        body=models.TextField(blank=True,db_index=True,verbose_name="Текст статьи")
         date_pub=models.DateTimeField(auto_now_add=True)
-        tags=models.ManyToManyField('Tag',blank=True,related_name='posts')
+        tags=models.ManyToManyField('Tag',blank=True,related_name='posts', verbose_name="Теги")
 
         def __str__(self):
             return self.title
@@ -71,6 +75,15 @@ class Post(models.Model):
         class Meta:
           verbose_name="Статья"
           verbose_name_plural = "Статьи"
+
+class Comment(models.Model):
+
+    name_author=models.CharField(max_length=50,blank=None)
+    body_comment=models.CharField(max_length=300,blank=None)
+    posts=models.ForeignKey(Post,blank=True,on_delete=models.CASCADE,related_name='posts')
+
+    def __str__(self):
+        return self.name_author
 
 class Tag(models.Model):
     title=models.CharField(max_length=50,unique=True)
