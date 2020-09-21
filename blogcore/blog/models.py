@@ -80,7 +80,7 @@ class Comment(models.Model):
 
     name_author=models.CharField(max_length=50,blank=None)
     body_comment=models.CharField(max_length=300,blank=None)
-    posts=models.ForeignKey(Post,blank=True,on_delete=models.CASCADE,related_name='posts')
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name_author

@@ -15,4 +15,31 @@
         </p>
 
 
+        <h4 class="mb-5 mt-3">Комментарии {{comm.count}} </h4>
+
+            {% if comm.count  %}
+
+            {% else %}
+            <div>Комментов нет стань первым ...</div>
+            {% endif %}
+
+            {% for c in comm %}
+            <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title"> {{c.name_author}}</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text"> {{c.body_comment}}</p>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        лаики
+                    </div>
+
+            </div>
+            <br>
+          {% endfor %}
+
+
     {% endblock content %}
