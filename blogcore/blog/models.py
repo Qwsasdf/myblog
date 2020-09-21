@@ -81,7 +81,7 @@ class Comment(models.Model):
     name_author=models.CharField(max_length=50,blank=None)
     body_comment=models.CharField(max_length=300,blank=None)
     post=models.ForeignKey(Post,on_delete=models.CASCADE)
-
+    comm_date_pub = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name_author
 
