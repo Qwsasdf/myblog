@@ -42,4 +42,14 @@
           {% endfor %}
 
 
+ <form class="mb-5 mt-3" action="{{  post.get_absolute_url  }}"  method="post">
+        {% csrf_token %}
+
+        {% for fields in form %}
+                {{fields.label}}
+                {{fields}}
+        {% endfor%}
+        <button type="submit" class="btn  btn-primary"> Сохранить</button>
+        <button type="reset" class="btn  btn-primary"> Очистить</button>
+    </form>
     {% endblock content %}
