@@ -3,13 +3,14 @@ from .models import Tag, Post, Comment
 from django.core.exceptions import ValidationError
 
 class CommentForm(forms.ModelForm):
+    post = forms.CharField(widget=forms.HiddenInput(), label='')
     class Meta:
         model = Comment
         fields = ["name_author","body_comment","post"]
         widgets = {
             'name_author': forms.TextInput(attrs={'class': 'form-control'}),
             'body_comment': forms.Textarea(attrs={'class': 'form-control'}),
-            'post': forms.HiddenInput(),
+
         }
 
 
