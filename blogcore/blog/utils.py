@@ -37,16 +37,10 @@ class ObjectDetailMixin:
 
     def post(self, request, slug):
         obj = get_object_or_404(self.model,slug__iexact=slug)
-
         bound_form = CommentForm(request.POST, {"post":obj})
         if bound_form.is_valid():
-            print("!!!!!!!!!!!!!!!!!!!")
-            print("!!!!!!!!!!!!!!!!!!!")
-            print(bound_form.cleaned_data)
-            print("!!!!!!!!!!!!!!!!!!!")
-            print("!!!!!!!!!!!!!!!!!!!")
             bound_form.save()
-            return redirect("post_detail_url",slug)
+        return redirect("post_detail_url",slug)
 
 class ObjCreateMixin:
     template = None
