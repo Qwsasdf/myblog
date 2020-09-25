@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+  .colored {
+            margin: 0;
+            padding: 0;
+            color: #FFFFFF;
+            font-family: verdana;
+            font-size: 150%
+           }
+    </style>
+
+
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -18,39 +29,49 @@
 
 <body>
 
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Блог  </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'post_lists_url' %}">Статьи</a></li>
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'about_us' %}">О нас</a></li>
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'tags_list_url' %}">Теги</a></li>
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'post_create_url' %}">Создать статью</a></li>
-            <li class="nav-item"><a class="nav-link link-color" href="{% url 'tag_create_url' %}">Создать тег</a></li>
-        </ul>
-        <span class="navbar-text">
-  Navbar text with an inline element
-</span>
-    </div>
-</nav>
-
-
-
-
-    <div class="container">
+<div class="container">
         <div class="row">
-             <div class="col-6 offset-md-2 ">
+            <nav class="col-md-12 navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="colored">Блог  </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link link-color" href="{% url 'post_lists_url' %}">Статьи</a></li>
+                        <li class="nav-item"><a class="nav-link link-color" href="{% url 'post_create_url' %}">Создать статью</a></li>
+                        <li class="nav-item"><a class="nav-link link-color" href="{% url 'tags_list_url' %}">Теги</a></li>
+                        <li class="nav-item"><a class="nav-link link-color" href="{% url 'tag_create_url' %}">Создать тег</a></li>
+                        <li class="nav-item "><a class="nav-link link-color " href="{% url 'about_us' %}">о нас</a></li>
+                    </ul>
+                    <span class="navbar-text">
+                    Navbar text with an inline element
+                    </span>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+             <div class="col-md-8 offset-md-2">
                 {% block content %}
                     blog Engine content
                 {% endblock %}
             </div>
         </div>
-    </div>
+
+
+        <div class="row">
+             <nav class="col-md-12 navbar bg-primary">
+
+            </nav>
+
+            <div class="col-md-12 footer-copyright text-center py-3">
+               © 2020 Copyright:
+                <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+            </div>
+        </div>
+
+</div>
 
 
 
