@@ -1,13 +1,14 @@
 {% extends "blog/base_blog.html" %}
 
 {% block title %}
-       Статьи
+     Статьи
 {% endblock %}
 
 
 
 {% block content %}
     <h1 class="mb-5">Статьи</h1>
+
     {% for post in var_for_html_templ %}
 
         {%include 'blog/includes/postcard.html'%}

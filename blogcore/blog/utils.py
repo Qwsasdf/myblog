@@ -29,11 +29,18 @@ class ObjectDetailMixin:
             comm = obj.comment_set.all()
             form = CommentForm( {"post":obj})
             return render(request, self.template,
-                      context={self.model.__name__.lower(): obj,"comm":comm,"form": form})
+                      context={self.model.__name__.lower(): obj,"comm":comm,"form": form,"admin_obj":obj})
         else:
             obj = get_object_or_404(self.model, slug__iexact=slug)
+
+            print("!!!!!!!!")
+            print("!!!!!!!!")
+            print("!!!!!!!!")
+            print(slug)
+            print("!!!!!!!!")
+            print("!!!!!!!!")
             return render(request, self.template,
-                          context={self.model.__name__.lower(): obj})
+                          context={self.model.__name__.lower(): obj,"admin_obj":obj})
 
     def post(self, request, slug):
         obj = get_object_or_404(self.model,slug__iexact=slug)

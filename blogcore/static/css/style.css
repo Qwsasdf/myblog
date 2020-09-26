@@ -1,0 +1,33 @@
+.admin_panel{
+    border : 1px solid #999;
+    border-radius : 2px;
+    opacity: 0.5;
+    padding : 30px;
+
+}
+
+.admin_panel a {
+    display : block;
+    margin : 5px 0;
+}
+
+.admin_panel:hover {
+    opacity: 1;
+ }
+
+.colored {
+            margin: 0;
+            padding: 0;
+            color: #FFFFFF;
+            font-family: verdana;
+            font-size: 150%
+           }
+
+.mytitle {
+            margin: 0;
+            padding: 100;
+            color: blue;
+            font-family: verdana;
+            font-size: 300%;
+
+           }
