@@ -7,11 +7,13 @@ from .forms import TagForm, PostForm
 
 def post_list(request):
     posts=Post.objects.order_by("-date_pub")
-    return render(request,'blog/post_list.html',context={"var_for_html_templ": posts})
+    templ_for_create='/post/create/'
+    return render(request,'blog/post_list.html',context={"var_for_html_templ": posts,"templ_for_create":templ_for_create})
 
 def tags_list(request):
     tags= Tag.objects.all()
-    return render(request, 'blog/tags_list.html',context={"tags":tags})
+    templ_for_create = '/tag/create/'
+    return render(request, 'blog/tags_list.html',context={"tags":tags,"templ_for_create":templ_for_create})
 
 # def post_detail(request,slug):
 #      # post=Post.objects.get("slug"==slug)

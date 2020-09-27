@@ -2,7 +2,7 @@
 
 {% block admin_panel%}
         <a href="/admin" class="btn btn-secondary">Админка</a>
-        <a href="{% url 'post_create_url' %}" class="btn btn-primary">Создать</a>
+        <a href="{{templ_for_create}}" class="btn btn-primary" style="{% if not templ_for_create %} display: none;{% endif %}">Создать</a>
         <a href="{{admin_obj.get_update_url}}" class="btn btn-info" style="{% if not admin_obj %} display: none;{% endif %}">Редактировать</a>
         <a href="{{admin_obj.get_delete_url}}" class="btn btn-danger" style="{% if not admin_obj %} display: none;{% endif %}">Удалить</a>
 {% endblock %}

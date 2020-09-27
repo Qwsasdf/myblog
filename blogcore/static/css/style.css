@@ -3,12 +3,13 @@
     border-radius : 2px;
     opacity: 0.5;
     padding : 30px;
-
+    margin : 5px 0;
 }
 
 .admin_panel a {
     display : block;
     margin : 5px 0;
+
 }
 
 .admin_panel:hover {
