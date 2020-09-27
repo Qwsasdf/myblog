@@ -1,48 +1,49 @@
 {% extends "blog/base_blog.html" %}
 
-    {% block title %}
-            {{post.title}} - {{block.super}}
-    {% endblock title %}
+{% block title %}
+        {{post.title}} - {{block.super}}
+{% endblock title %}
 
-    {% block content %}
+{% block content %}
 
-        <h2 class="mt-5">
-           {{post.title}}
-        </h2>
-        <br>
-        <p class="mt-5">
-           {{post.body}}
-        </p>
-
-
-        <h4 class="mb-5 mt-3">Комментарии {{comm.count}} </h4>
-
-            {% if comm.count  %}
-
-            {% else %}
-            <div>Комментов нет стань первым ...</div>
-            {% endif %}
-
-            {% for c in comm %}
-            <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title"> {{c.name_author}} | {{c.comm_date_pub}}</h5>
-                    </div>
-
-                    <div class="card-body">
-                        <p class="card-text"> {{c.body_comment}}</p>
-                    </div>
-
-                    <div class="card-footer text-muted">
-                        лаики
-                    </div>
-
-            </div>
-            <br>
-          {% endfor %}
+    <h2 class="mt-5">
+       {{post.title}}
+    </h2>
+    <br>
+    <p class="mt-5">
+       {{post.body}}
+    </p>
 
 
- <form class="mb-5 mt-3" action="{{  post.get_absolute_url  }}"  method="post">
+    <h4 class="mb-5 mt-3">Комментарии {{comm.count}} </h4>
+
+    {% if comm.count  %}
+
+    {% else %}
+        <div>Комментов нет стань первым ...</div>
+    {% endif %}
+
+    {% for c in comm %}
+        <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title"> {{c.name_author}} | {{c.comm_date_pub}}</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text"> {{c.body_comment}}</p>
+                </div>
+
+                <div class="card-footer text-muted">
+                    лаики
+                </div>
+
+        </div>
+    <br>
+    {% endfor %}
+
+
+    <form class="mb-5 mt-3" action="{{  post.get_absolute_url  }}"  method="post">
         {% csrf_token %}
 
         {% for fields in form %}
@@ -52,4 +53,5 @@
         <button type="submit" class="btn  btn-primary"> Сохранить</button>
         <button type="reset" class="btn  btn-primary"> Очистить</button>
     </form>
-    {% endblock content %}
+
+{% endblock content %}
