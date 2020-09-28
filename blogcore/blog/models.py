@@ -81,11 +81,12 @@ class Post(models.Model):
         class Meta:
           verbose_name="Статья"
           verbose_name_plural = "Статьи"
+          ordering = ['-date_pub']
 
 class Comment(models.Model):
 
-    name_author=models.CharField(max_length=50,blank=None,verbose_name="Заголовок")
-    body_comment=models.CharField(max_length=300,blank=None,verbose_name="Заголовок")
+    name_author=models.CharField(max_length=50,blank=None,verbose_name="Автор")
+    body_comment=models.CharField(max_length=300,blank=None,verbose_name="Комментарий")
     post=models.ForeignKey(Post,on_delete=models.CASCADE,verbose_name="")
     comm_date_pub = models.DateTimeField(auto_now_add=True)
     def __str__(self):

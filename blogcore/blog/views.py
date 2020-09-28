@@ -3,16 +3,16 @@ from .models import Post, Tag
 from  django.views.generic import View
 from .utils import *
 from .forms import TagForm, PostForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin # Модуль авторизации миксином
 
 def post_list(request):
-    posts=Post.objects.order_by("-date_pub")
-    templ_for_create='/post/create/'
+    posts=Post.objects.all()
+    templ_for_create='/blog/post/create/'
     return render(request,'blog/post_list.html',context={"var_for_html_templ": posts,"templ_for_create":templ_for_create})
 
 def tags_list(request):
     tags= Tag.objects.all()
-    templ_for_create = '/tag/create/'
+    templ_for_create = '/blog/tag/create/'
     return render(request, 'blog/tags_list.html',context={"tags":tags,"templ_for_create":templ_for_create})
 
 # def post_detail(request,slug):
@@ -36,39 +36,43 @@ class TagDetail(ObjectDetailMixin,View):
     template = 'blog/tags_detail.html'
     template_red = 'tags_list_url'
 
-class PostCreate(ObjCreateMixin,View):
+class PostCreate(LoginRequiredMixin,ObjCreateMixin,View):
     model_form = PostForm
     template = 'blog/post_create.html'
     template_red = 'post_lists_url'
+    raise_exception = True
 
-class TagCreate(ObjCreateMixin,View):
+
+
+class TagCreate(LoginRequiredMixin,ObjCreateMixin,View):
     model_form = TagForm
     template = 'blog/tag_create.html'
     template_red = 'tags_list_url'
-
-class  TagUpdate(ObjUpdateMixin,View):
+    raise_exception = True
+class  TagUpdate(LoginRequiredMixin,ObjUpdateMixin,View):
     model = Tag
     model_form = TagForm
     template = "blog/tag_update_form.html"
     template_red = "tags_list_url"
-
-class PostUpdate(ObjUpdateMixin, View):
+    raise_exception = True
+class PostUpdate(LoginRequiredMixin,ObjUpdateMixin, View):
     model = Post
     model_form = PostForm
     template = "blog/post_update_form.html"
     template_red = "post_lists_url"
+    raise_exception = True
 
-
-class TagDel(ObjDelMixin,View):
+class TagDel(LoginRequiredMixin,ObjDelMixin,View):
     model = Tag
     template = 'blog/tags_list.html'
     template_red = 'tags_list_url'
+    raise_exception = True
 
-class PostDel(ObjDelMixin,View):
+class PostDel(LoginRequiredMixin,ObjDelMixin,View):
     model = Post
     template = 'blog/post_list.html'
     template_red = 'post_lists_url'
-
+    raise_exception = True
 
 
 

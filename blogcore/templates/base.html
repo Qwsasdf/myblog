@@ -46,13 +46,14 @@
                             blog Engine content
                         {% endblock %}
                     </div>
-
+                {% if request.user.is_authenticated and request.user.is_staff %}
                     <div class="col-md-4 ">
                                 <div class="admin_panel">
                                        {% block admin_panel%}
                                        {% endblock %}
                                 </div>
                      </div>
+                {% endif %}
                 </div>
 
 
