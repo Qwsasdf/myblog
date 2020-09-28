@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["192.168.2.148","192.168.1.100","127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL =  '/'
 
 
 # Static files (CSS, JavaScript, Images)
